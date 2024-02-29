@@ -1,0 +1,7 @@
+<div  class="example-list" >
+    <div class="example-box" *ngFor="let item of posts">
+        <img [src]="item.image" style="width: 50px;" alt="">&nbsp; {{truncate(item.text) }}
+        <span class="pull-right d-inline-block gray-text">{{yesterday | date: 'medium'}}</span>
+    </div>
+  </div>
+  
