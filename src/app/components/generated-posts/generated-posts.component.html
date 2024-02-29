@@ -1,0 +1,32 @@
+<ng-container *ngFor="let group of posts">
+    <div class="group">
+        <span>{{group.feature}}</span>
+    </div>
+    <div class="align-content-around flex-wrap d-flex">
+        <div class="card" *ngFor="let post of group.posts"
+            style="margin-right: 20px;margin-bottom: 20px; max-width: 600px;">
+            <div class="card-header">
+                <span [class.text-success]="post.recommendation_percantage >= 50"
+                    [class.text-warning]="post.recommendation_percantage >= 30 && post.recommendation_percantage < 50" [class.text-danger]="post.recommendation_percantage < 30"><span>AI Recommendation: </span>{{post.recommendation_percantage}}%</span>
+                <span class="pull-right text-danger" *ngIf="post.shouldBerejected" title="AI thinks that this post may contain some words or some visuals that should not be posted."><i
+                        class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="card-body">
+                <label for="" style="color:#b7b7b7">Generated At:</label>
+                <p>{{currentTime | date: 'medium'}}</p>
+                <div class="description">
+                    <p>{{post.text}}</p>
+                </div>
+                <div class="image-container text-center">
+                    <img [src]="post.image" width="330px;" alt="">
+                </div>
+            </div>
+            <div class="card-footer" style="text-align: right;">
+                <button class="btn btn-danger mr-2" (click)="rejctPost(post)">Reject</button>
+                <!-- <button class="btn btn-primary mr-2" (click)="publishNow(post)">Publish Now</button> -->
+                <button class="btn btn-primary" (click)="approvePost()">Approve</button>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div for="" class="gray-text">Publish to:</div>
+<section class="example-section">
+    <mat-checkbox class="example-margin" name="platform" *ngFor="let p of platforms; index as i">{{p}}</mat-checkbox>
+    <!-- <mat-checkbox class="example-margin" >Indeterminate</mat-checkbox> -->
+</section>
+
+<div class="gray-text mb-2 mt-4">How Would You Like To Generate The Content about:</div>
+<table class="example-full-width" cellspacing="0">
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <mat-label>Feature Reference Text</mat-label>
+                <input matInput placeholder="Parameterization">
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+
+<div class="gray-text mb-2">Upload a PDF File:</div>
+<input type="file" (change)="selectFile($event)">
+<section>
+    <div class="example-button-row mt-3 mt-2">
+      <button mat-raised-button color="primary" (click)="generateContent()">Generate</button>
+      </div>
+    </section>
+</div>
